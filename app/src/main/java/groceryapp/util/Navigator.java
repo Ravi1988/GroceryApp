@@ -5,5 +5,6 @@ package groceryapp.util;
  */
 
 public interface Navigator {
-	void openProductDetailPage(int position);
+	void openProductDetailPage(long position);
+	void openProductDetailListPage();
 }
