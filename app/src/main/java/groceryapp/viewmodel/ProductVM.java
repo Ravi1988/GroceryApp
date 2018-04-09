@@ -6,7 +6,7 @@ import android.databinding.Bindable;
 import javax.inject.Inject;
 
 import groceryapp.BR;
-import groceryapp.model.ProductData.Product;
+import groceryapp.model.Product;
 import groceryapp.util.Navigator;
 
 /**

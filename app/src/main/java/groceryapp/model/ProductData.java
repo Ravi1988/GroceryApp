@@ -1,9 +1,12 @@
 package groceryapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties
 public class ProductData extends BaseModel{
 	@JsonProperty("total")
 	private int total;

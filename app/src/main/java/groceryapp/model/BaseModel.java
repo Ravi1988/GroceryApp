@@ -1,9 +1,11 @@
 package groceryapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Created by ravi.sharma01 on 4/7/18.
  */
-
+@JsonIgnoreProperties
 public class BaseModel {
 
 	private Status status;

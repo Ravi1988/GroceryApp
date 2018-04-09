@@ -6,9 +6,9 @@ import android.databinding.ObservableList;
 
 import javax.inject.Inject;
 
+import groceryapp.model.Product;
 import groceryapp.model.ProductData;
-import groceryapp.model.ProductData.Product;
-import groceryapp.repo.ProductListRepo;
+import groceryapp.repo.ProductsRepo;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -18,7 +18,7 @@ import io.reactivex.disposables.Disposable;
 
 public class ProductListVM {
 
-	private final ProductListRepo productListRepo;
+	private final ProductsRepo productListRepo;
 	private ObservableField<Boolean> showProgressBar;
 	private ObservableField<Boolean> showError;
 
@@ -27,7 +27,7 @@ public class ProductListVM {
 	private ObservableList<Product> productList;
 
 	@Inject
-	public ProductListVM(ProductListRepo productListRepo) {
+	public ProductListVM(ProductsRepo productListRepo) {
 		showProgressBar = new ObservableField<>(false);
 		showError = new ObservableField<>(false);
 		productData = new ObservableField<>();
@@ -40,7 +40,7 @@ public class ProductListVM {
 
 	public void load(){
 		showProgress();
-		productListRepo.getTopStories().subscribe(new Observer<ProductData>() {
+		productListRepo.getProductList(0,20).subscribe(new Observer<ProductData>() {
 			@Override
 			public void onSubscribe(Disposable d) {
 

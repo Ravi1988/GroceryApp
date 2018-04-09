@@ -18,7 +18,7 @@ import groceryapp.TheGroceryApp;
 import groceryapp.databinding.ProductDetailViewBinding;
 import groceryapp.di.AppComponent;
 import groceryapp.di.ContextModule;
-import groceryapp.model.ProductData.Product;
+import groceryapp.model.Product;
 import groceryapp.viewmodel.ProductListVM;
 import groceryapp.viewmodel.ProductVM;
 

@@ -11,7 +11,7 @@ import javax.inject.Inject;
 
 import groceryapp.BR;
 import groceryapp.R;
-import groceryapp.model.ProductData.Product;
+import groceryapp.model.Product;
 import groceryapp.util.Navigator;
 import groceryapp.viewmodel.ProductVM;
 

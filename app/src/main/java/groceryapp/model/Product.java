@@ -1,8 +1,11 @@
 package groceryapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-public class Product {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties
+public class Product extends BaseModel{
 
 	private String title;
 
