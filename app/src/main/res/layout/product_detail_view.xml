@@ -1,52 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:bind="http://schemas.android.com/apk/res/android">
 
     <data>
         <import type="android.view.View"/>
-        <variable name="vm" type="groceryapp.viewmodel.ProductVM"/>
+        <variable name="vm" type="com.groceryapp.viewmodel.ProductDetailVM"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent" android:layout_height="match_parent"
-        android:padding="10dp"
-        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@android:color/white">
 
         <ImageView
             android:id="@+id/img"
-            android:layout_width="match_parent" android:layout_height="195dp"
-            android:layout_marginEnd="8dp" android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp" android:adjustViewBounds="true"
-            app:imageUrl="@{vm.product.getUrlToImage()}"
+            android:layout_width="match_parent"
+            android:layout_height="195dp"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
+            bind:imageUrl="@{vm.product.img.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@{vm.product.title}"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img"/>
+
         <TextView
             android:id="@+id/des"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp" android:layout_marginTop="15dp"
-            android:text="@{vm.product.getDescription()}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@{vm.product.description}"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title"/>
+
         <TextView
-            android:id="@+id/createdAt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_marginEnd="16dp"
-            android:layout_marginTop="10dp" android:text="@{vm.product.getPublishedAt()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/des" tools:ignore="RtlCompat"/>
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_marginEnd="8dp"
-            android:layout_marginTop="10dp"
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:text="@{Double.toString(vm.product.pricing.price)}"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_marginStart="8dp" android:text="@{vm.product.getTitle()}"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/des"
+        />
+
+        <include layout="@layout/network_error_view" bind:vm="@{vm}"/>
+        <include layout="@layout/progress_bar" bind:vm="@{vm}"/>
+
     </android.support.constraint.ConstraintLayout>
 </layout>

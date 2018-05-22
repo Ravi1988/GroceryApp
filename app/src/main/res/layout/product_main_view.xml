@@ -1,53 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:bind="http://schemas.android.com/apk/res/android">
 
     <data>
         <import type="android.view.View"/>
         <variable
             name="vm"
-            type="groceryapp.viewmodel.ProductListVM"/>
+            type="com.groceryapp.viewmodel.ProductListVM"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:bind="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="codeforandroid.thehindunews.view.MainActivity">
-
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swipeLayout"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            bind:isLoading="@{vm.showProgressBar.get()}">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvList"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-        </android.support.v4.widget.SwipeRefreshLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:visibility="@{vm.isShowError.get() ? View.VISIBLE : View.GONE}">
-            <include layout="@layout/network_error_view" bind:vm="@{vm}"/>
-        </LinearLayout>
-
-        <LinearLayout android:id="@+id/frag_container"
-                      android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical"
-                      app:layout_constraintEnd_toEndOf="parent"
-                      app:layout_constraintStart_toStartOf="parent"
-                      app:layout_constraintTop_toTopOf="parent">
-
-        </LinearLayout>
-
+        <include layout="@layout/network_error_view" bind:vm="@{vm}"/>
+        <include layout="@layout/progress_bar" bind:vm="@{vm}"/>
 
     </android.support.constraint.ConstraintLayout>
+
 </layout>

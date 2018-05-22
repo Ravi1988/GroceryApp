@@ -4,17 +4,20 @@
         <import type="android.view.View"/>
         <variable
             name="vm"
-            type="groceryapp.viewmodel.ProductListVM"/>
+            type="com.groceryapp.viewmodel.BaseViewModel"/>
     </data>
     <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent" android:layout_height="match_parent"
-        android:background="@android:color/darker_gray">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"
+        android:visibility="@{vm.showError.get() ? View.VISIBLE : View.GONE}">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="84dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:text="Something went wrong!" app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/ntwrk_error_msg"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"/>
         <Button
@@ -33,9 +37,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
-            android:text="Retry" app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{() -> vm.onLoad()}"
+            android:text="@string/retry"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:onClick="@{() -> vm.load()}"
             app:layout_constraintTop_toBottomOf="@+id/textView"/>
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">groceryApp</string>
+    <string name="retry">Retry</string>
+    <string name="ntwrk_error_msg">Something went wrong!</string>
 </resources>
